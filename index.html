@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+
+    <bory onload="">
+
+        <div class='header'>
+            <div class='form'>        
+                <div class="form-field"> 
+                    <label>Intervalo<input id='botTemp' value="10"></input> </label>
+                    <button onclick="setarTempo()">Aplicar</button>   
+                </div>
+                <div class="form-field"> 
+                    <label>Novo Link<input id='botAdd' ></input></label>
+                    <button onclick="addLink()">Adicionar</button>
+                    <button class="text-button">Lista de Links</button>
+                    
+                </div>
+            </div>    
+            <div>  
+                <button class="danger" onclick="parar()">Parar</button>
+                <button class="success" onclick="iniciar()">Iniciar</button>
+                
+            </div>
+        </div>
+
+        <iframe id="tela" class="ajuste" width="100%" height="100%" src="" frameborder="0" allowFullScreen="true"></iframe>      
+    </bory>
+    <script src ="js/index.js"></script>
+    
+</html>
