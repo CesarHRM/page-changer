@@ -1,19 +1,11 @@
 var iframe = document.getElementById("tela"); 
 
-//////////////////
-fetch(" https://sheetdb.io/api/v1/7kho44vtmakgm")
-.then(response => response.json() )
-.then(data =>{
-    console.log(data)
-})
-.catch(err => console.log(err))
 
-////////////
 
-var URLs = ['https://app.powerbi.com/view?r=eyJrIjoiNDIyYWJjM2ItYTgwMi00NjQzLWEzYTItZWMwNzIzOTY2MDUxIiwidCI6IjA0ZWM2MTA5LTRjNzktNGM3My1hZTcxLWE0NzRjMDlhMWY1YSJ9',
-                'https://app.powerbi.com/view?r=eyJrIjoiYjNlNzAzMGQtZGQ0Yi00ZTQyLTg1NmMtZTdiZmI3MTAzZTQzIiwidCI6IjUzMjFhYTk0LWFmODgtNDU3Zi1hNWRkLTBkNWNhM2ZjYzIzOSIsImMiOjEwfQ%3D%3D',
-                    'https://app.powerbi.com/view?r=eyJrIjoiMWU1OTliMzAtMDQxZi00NmRlLWFjZDMtNDY4NTA2N2I0MjYxIiwidCI6IjU3NzI4ZTBjLTNjMjMtNDMwMC05ZGViLTk1NTc5ODFkMDc4MSJ9'];  //   JSON.parse(localStorage.getItem('links')) || 
-var urlAtual= URLs[1];
+var URLs = [];
+var urlAtual= "";
+var urlAtualJson = {};
+
 
 var intervalo = 10000;
 
@@ -25,26 +17,46 @@ function troca_link(url){
 }
 
 
+//////////////////
+fetch(" https://sheetdb.io/api/v1/7kho44vtmakgm")
+.then(response => response.json() )
+.then(data =>{
+    URLs = data
+    urlAtualJson= URLs[1];
+    urlAtual = urlAtualJson["url"];
+    console.log(urlAtual);
+    console.log(data)
+})
+.catch(err => console.log(err))
+
+////////////
+
+
 function trocarTela(){
-    var proxUrl = URLs.indexOf(urlAtual) +1;
     var tamanho = URLs.length
+    var proxUrl = URLs.indexOf(urlAtualJson) +1;
     if(proxUrl > tamanho -1){ proxUrl=0;}
     //console.log(novaUrl);
     //console.log(tamanho);
-    //console.log(urlAtual);
-    urlAtual=URLs[proxUrl];
+
+    urlAtualJson =URLs[proxUrl];
+    urlAtual = urlAtualJson["url"];
     troca_link(urlAtual);
+
+    console.log("URL ATUAL: "+ urlAtual);
 }
 
-function teste(){console.log('testwe');}
 
-function iniciar(){
+function init(){
+    trocarTela();
     ciclo = setInterval(trocarTela,intervalo);
 }
 
-function parar(){
+function stop(){
     clearInterval(ciclo);
 }
+
+function refresh(){}
 
 function addLink(){
     //console.log('bot press');
@@ -55,16 +67,12 @@ function addLink(){
     salvarDadosNoStorage();
 }
 
-function setarTempo(){
+function setTIme(){
     
     const inputtemp = document.querySelector("#botTemp");
     const valortemp = inputtemp.value;
     intervalo = valortemp * 1000;
     console.log(intervalo);
     
-}
-
-function salvarDadosNoStorage(){
-    localStorage.setItem('links', JSON.stringify(URLs) );
 }
 
