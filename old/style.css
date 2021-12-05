@@ -1,0 +1,76 @@
+.header{
+    display: flex;
+    padding: 8px 16px;
+    background-color: #333;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#tela{
+    height: calc(100vh - 72px);
+
+}
+
+input{
+    background-color: #666;
+    height: 48px;
+    padding-left: 8px;
+    box-sizing: border-box;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    margin-left: 16px;
+}
+
+button{
+    border: none;
+    border-radius: 2px;
+    height: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: #38c2ee;
+    font-size: 16px;
+}
+
+button:hover{
+    opacity: 0.9 ;
+}
+
+button:active{
+    opacity: 1;
+}
+
+.form-field{
+    margin-right: 32px;
+
+}
+
+.form{
+    display: flex;
+}
+
+.success{
+    background-color: #38eec2;
+}
+
+.danger{
+    background-color: #ff7575;
+}
+
+label{
+    display: inline-block;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.text-button{
+    background-color: transparent;
+    color: #38c2ee;
+}

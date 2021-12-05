@@ -1,32 +1,28 @@
 var iframe = document.getElementById("tela"); 
 
-var URLs = [];
+//////////////////
+fetch(" https://sheetdb.io/api/v1/7kho44vtmakgm")
+.then(response => response.json() )
+.then(data =>{
+    console.log(data)
+})
+.catch(err => console.log(err))
+
+////////////
+
+var URLs = ['https://app.powerbi.com/view?r=eyJrIjoiNDIyYWJjM2ItYTgwMi00NjQzLWEzYTItZWMwNzIzOTY2MDUxIiwidCI6IjA0ZWM2MTA5LTRjNzktNGM3My1hZTcxLWE0NzRjMDlhMWY1YSJ9',
+                'https://app.powerbi.com/view?r=eyJrIjoiYjNlNzAzMGQtZGQ0Yi00ZTQyLTg1NmMtZTdiZmI3MTAzZTQzIiwidCI6IjUzMjFhYTk0LWFmODgtNDU3Zi1hNWRkLTBkNWNhM2ZjYzIzOSIsImMiOjEwfQ%3D%3D',
+                    'https://app.powerbi.com/view?r=eyJrIjoiMWU1OTliMzAtMDQxZi00NmRlLWFjZDMtNDY4NTA2N2I0MjYxIiwidCI6IjU3NzI4ZTBjLTNjMjMtNDMwMC05ZGViLTk1NTc5ODFkMDc4MSJ9'];  //   JSON.parse(localStorage.getItem('links')) || 
 var urlAtual= URLs[1];
 
 var intervalo = 10000;
 
 var ciclo = "";
 
-
-//////////////////
-fetch(" https://sheetdb.io/api/v1/7kho44vtmakgm")
-.then(response => response.json() )
-.then(data =>{
-    //console.log(URLs);
-    URLs= data;
-    //console.log(URLs);
-})
-.catch(err => console.log(err))
-
-////////////
-
 function troca_link(url){   
     iframe.src = url
     console.log("executou");
 }
-
-
-
 
 
 function trocarTela(){
@@ -36,7 +32,7 @@ function trocarTela(){
     //console.log(novaUrl);
     //console.log(tamanho);
     //console.log(urlAtual);
-    urlAtual=URLs[proxUrl]["url"];
+    urlAtual=URLs[proxUrl];
     troca_link(urlAtual);
 }
 
