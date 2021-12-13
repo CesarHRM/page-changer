@@ -68,9 +68,9 @@ function addLink(){
     salvarDadosNoStorage();
 }
 
-function setTIme(){
+function setTime(){
     
-    const inputtemp = document.querySelector("#botTemp");
+    const inputtemp = document.querySelector("#inputTime");
     const valortemp = inputtemp.value;
     intervalo = valortemp * 1000;
     console.log(intervalo);
