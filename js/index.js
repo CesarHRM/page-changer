@@ -7,7 +7,7 @@ var urlAtual= "";
 var urlAtualJson = {};
 
 
-var intervalo = 10000;
+var intervalo = 50000;
 
 var ciclo = "";
 
